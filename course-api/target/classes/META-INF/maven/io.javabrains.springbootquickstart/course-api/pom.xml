@@ -1,0 +1,33 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+		<modelVersion>4.0.0</modelVersion>
+		
+		<!--info from file creation, This is a simple Maven project.-->
+		<!-- https://www.youtube.com/watch?v=gZ1I2gHU220 -->
+		
+		<groupId>io.javabrains.springbootquickstart</groupId>
+		<artifactId>course-api</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<name>Java Brains Course API</name>
+  
+  <!--step 1 declaring our project is a child of this parent project for inheritance-->
+  <!--So, it will inherit all the default Maven configuration from the spring boot starter parent.  -->
+  <parent>
+  		<groupId>org.springframework.boot</groupId>
+  		<artifactId>spring-boot-starter-parent</artifactId>
+  		<version>1.4.2.RELEASE</version>
+  </parent>
+  
+  <!--  step 2 declare meta dependencies, import api -->
+  <dependencies>
+  		<dependency>
+  			<groupId>org.springframework.boot</groupId>
+  			<artifactId>spring-boot-starter-web</artifactId>
+  		</dependency>
+  </dependencies>
+  
+  <!-- step 3 change the java version, so Maven update updates the JRE System Library-->
+  <properties>
+  		<java.version>1.8</java.version>
+  </properties>
+  
+</project>
