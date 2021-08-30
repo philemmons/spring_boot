@@ -15,8 +15,7 @@ Java Brains playlist is featured on [YouTube](https://www.youtube.com/playlist?l
 https://spring.io/projects/spring-boot
 
 
-<p>https://stackify.com/what-is-spring-boot/</p>
-<p>The above article covered some common questions and information for beginners such as:</p>
+<p>This Stackify [article](https://stackify.com/what-is-spring-boot/) covered some common questions and offered insight for beginners such as:</p>
 
 - ##### What Is Spring Boot?
 
