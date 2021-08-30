@@ -3,18 +3,20 @@
 
 <p><i><b>Learn how to create full end-to-end Spring applications using Spring Boot.</b></i></p>
 
-Welcome to the course 'Spring Boot Quick Start'!
+<p>Welcome to the course 'Spring Boot Quick Start'!</p>
+
 https://www.javabrains.io/courses/springboot-quickstart
 
 
 Java Brains playlist is featured on [YouTube](https://www.youtube.com/playlist?list=PLqq-6Pq4lTTbx8p2oCgcAQGQyqN8XeA1x)
 
-A brief overview from spring.io about functionality.
+<p>A brief overview from spring.io about functionality.</p>
+
 https://spring.io/projects/spring-boot
 
 
-https://stackify.com/what-is-spring-boot/
-The above article covered some common questions and information for beginners such as:
+<p>https://stackify.com/what-is-spring-boot/</p>
+<p>The above article covered some common questions and information for beginners such as:</p>
 
 - ##### What Is Spring Boot?
 
