@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.javabrains.springbootstarter.topic.Topic;
+
 
 @RestController
 public class CourseController {
@@ -20,7 +22,7 @@ public class CourseController {
 
 	@RequestMapping("/topics/{id}/courses")  
 	public List<Course> getAllCourses(@PathVariable String id) {
-		return courseService.getAllCourses();
+		return courseService.getAllCourses(id);
 	}
 	
 	@RequestMapping("/topics/{topicId}/courses/{id}")
@@ -30,6 +32,7 @@ public class CourseController {
 
 	@RequestMapping(method=RequestMethod.POST, value="/topics/{topicId}/courses")
 	public void addCourse(@RequestBody Course course, @PathVariable String topicId) {
+		//maps the Course to the Topic class - 
 		course.setTopic(new Topic( topicId, "", ""));
 		courseService.addCourse(course);
 	}
@@ -42,7 +45,7 @@ public class CourseController {
 	
 	@RequestMapping(method=RequestMethod.DELETE, value="/topics/{topicId}/courses/{id}")
 	public void deleteTopic(@PathVariable String id) {
-		courseService.deleteTopic(id);
+		courseService.deleteCourse(id);
 	}
 	
 }

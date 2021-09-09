@@ -1,7 +1,6 @@
 package io.javabrains.springbootstarter.course;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,13 +16,11 @@ public class CourseService {
 	@Autowired
 	private CourseRepository courseRepository;
 	
-	public List<Course> getAllCourses(String id){
-		
+	public List<Course> getAllCourses(String topicId){
 		List<Course> courses = new ArrayList<>();
-		
 		//  SEE java 8 Lambda basics from javabrains.io !!!
 		//  iterating over the results from findAll and populating the topic list
-		courseRepository.findAll()
+		courseRepository.findByTopicId(topicId)
 			.forEach(courses::add);
 		
 		return courses;
@@ -42,7 +39,7 @@ public class CourseService {
 		courseRepository.save(course);
 	}
 	
-	public void deleteTopic(String id) {
+	public void deleteCourse(String id) {
 		courseRepository.deleteById(id);
 	}
 

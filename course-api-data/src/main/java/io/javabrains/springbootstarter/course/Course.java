@@ -2,6 +2,9 @@ package io.javabrains.springbootstarter.course;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+import io.javabrains.springbootstarter.topic.Topic;
 
 
 // This will tell Spring this class is an entity object for JPA which will be mapped
@@ -15,14 +18,15 @@ public class Course {
 	private String name;
 	private String description;
 	
-	private Topic topic;
+	@ManyToOne
+	private Topic topic;// this is the foreign key to the table
 	
 	public Course(String id, String name, String description, String topicId) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.description = description;
-		this.setTopic(new Topic(topicId, "", ""));
+		this.topic = new Topic(topicId, "", "" );
 	}
 	
 	public Course() {
