@@ -1,0 +1,86 @@
+
+https://www.baeldung.com/spring-boot-actuators#boot-2x-actuator
+
+Health Groups
+
+As of Spring Boot 2.2, we can organize health indicators into groups and apply the same configuration to all the group members.
+
+For example, we can create a health group named custom by adding this to our application.properties:
+
+	management.endpoint.health.group.custom.include=diskSpace,ping
+
+This way, the custom group contains the diskSpace and ping health indicators.
+
+Now if we call the /actuator/health endpoint, it would tell us about the new health group in the JSON response:
+
+	{"status":"UP","groups":["custom"]}
+With health groups, we can see the aggregated results of a few health indicators.
+
+In this case, if we send a request to /actuator/health/custom, then:
+
+	{"status":"UP"}
+We can configure the group to show more details via application.properties:
+
+	management.endpoint.health.group.custom.show-components=always
+	management.endpoint.health.group.custom.show-details=always
+
+Now if we send the same request to /actuator/health/custom, we'll see more details:
+
+{
+    "status": "UP",
+    "components": {
+        "db": {
+            "status": "UP",
+            "details": {
+                "database": "Apache Derby",
+                "validationQuery": "isValid()"
+            }
+        },
+        "diskSpace": {
+            "status": "UP",
+            "details": {
+                "total": 499429404672,
+                "free": 167555039232,
+                "threshold": 10485760,
+                "exists": true
+            }
+        },
+        "ping": {
+            "status": "UP"
+        }
+    }
+}
+
+It's also possible to show these details only for authorized users:
+
+	management.endpoint.health.group.custom.show-components=when_authorized
+	management.endpoint.health.group.custom.show-details=when_authorized
+
+We can also have a custom status mapping.
+
+For instance, instead of an HTTP 200 OK response, it can return a 207 status code:
+
+	management.endpoint.health.group.custom.status.http-mapping.up=207
+Here, we're telling Spring Boot to return a 207 HTTP status code if the custom group status is UP.
+
+===\
+
+3.11. Enable All Endpoints
+In order to access the actuator endpoints using HTTP, we need to both enable and expose them.
+
+By default, all endpoints but /shutdown are enabled. Only the /health and /info endpoints are exposed by default.
+
+We need to add the following configuration to expose all endpoints:
+
+	management.endpoints.web.exposure.include=*
+
+To explicitly enable a specific endpoint (e.g., /shutdown), we use:
+
+	management.endpoint.shutdown.enabled=true
+
+To expose all enabled endpoints except one (e.g., /loggers), we use:
+
+	management.endpoints.web.exposure.include=*
+	management.endpoints.web.exposure.exclude=loggers
+	
+	

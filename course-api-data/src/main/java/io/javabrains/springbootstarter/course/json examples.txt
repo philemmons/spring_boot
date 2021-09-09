@@ -1,5 +1,4 @@
 
-
 // a topic payload is added to this, course content with the topic
 [
     {
@@ -13,7 +12,6 @@
         }
     }
 ]
-
 
     {
         "id": "java-streams",
