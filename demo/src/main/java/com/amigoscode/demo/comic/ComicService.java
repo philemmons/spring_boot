@@ -1,6 +1,7 @@
 package com.amigoscode.demo.comic;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,5 +19,15 @@ public class ComicService {
 
 	public List<Comic> getComics() {
 		return comicRepository.findAll();
+	}
+
+	public void addNewComic(Comic comic) {
+		Optional<Comic> comicOptional = comicRepository
+				.findComicByTitle( comic.getTitle() );
+		if(comicOptional.isPresent()) {
+			throw new IllegalStateException("Title exist");
+		}
+		//System.out.println(comic);
+		comicRepository.save(comic);
 	}
 }

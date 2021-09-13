@@ -1,6 +1,7 @@
 package com.amigoscode.demo.comic;
 
 import java.time.LocalDate;
+import java.time.Period;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 //  mapping the class to a table in the database
 @Entity
@@ -29,6 +31,10 @@ public class Comic {
 	private LocalDate publishDate;
 	private Integer issue;
 	private Boolean significant;
+	
+	//  Specifies that the property or field is not persistent.
+	@Transient
+	private int age;
 	
 	public Comic() {
 	}
@@ -53,8 +59,9 @@ public class Comic {
 		return "Comic [id=" + id + 
 				", title=" + title + 
 				", publishDate=" + publishDate + 
-				", issue=" + issue
-				+ ", significant=" + significant + 
+				", issue=" + issue + 
+				", significant=" + significant +
+				", age=" + age +
 				"]";
 	}
 
@@ -97,4 +104,9 @@ public class Comic {
 	public void setSignificant(Boolean significant) {
 		this.significant = significant;
 	}
+
+	public int getAge() {
+		return Period.between(this.publishDate, LocalDate.now()).getYears();
+	}
+
 }
