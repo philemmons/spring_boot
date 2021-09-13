@@ -2,8 +2,28 @@ package com.amigoscode.demo.comic;
 
 import java.time.LocalDate;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+//  mapping the class to a table in the database
+@Entity
+@Table
 public class Comic {
 	// note - class type for Long, Integer, and Boolean
+	@Id
+	@SequenceGenerator(
+			name= "comic_sequence",
+			sequenceName = "comic_sequence",
+			allocationSize = 1
+	)
+	@GeneratedValue(
+			strategy = GenerationType.SEQUENCE,
+			generator = "comic_sequence"
+	)
 	private Long id;
 	private String title;
 	private LocalDate publishDate;
