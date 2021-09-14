@@ -28,6 +28,7 @@ public class ComicConfiguration {
 					126,
 					true
 					);
+			
 			//  examine the console to view the SQl invoked by hibernate when executed		
 			repository.saveAll(
 					List.of(ironman,thor)

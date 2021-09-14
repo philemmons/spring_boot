@@ -11,6 +11,6 @@ public interface ComicRepository
 	//  JPA repo  extends PagingAndSortingRepository which in turn extends CrudRepository. 
 	extends JpaRepository<Comic, Long>{ // <T, ID>
 	
-	// @Query("SELECT s FROM Comic c WHERE c.title =?1")
+	//@Query("SELECT s FROM Comic c WHERE c.title =?1")
 	Optional<Comic> findComicByTitle(String title);
 }
